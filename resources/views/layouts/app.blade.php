@@ -16,13 +16,26 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        {{-- jquery --}}
+        <script src="{{ asset('js/jquery.js')}}"></script>
+        {{-- user script --}}
+        <script src="{{ asset('js/index.js')}}"></script>
+
+        <style>
+            #checkbox:checked + label .switch-ball{
+              background-color: white;
+              transform: translateX(24px);
+              transition: transform 0.3s linear;
+            }
+          </style>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased overflow-x-hidden">
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">

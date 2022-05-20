@@ -7,9 +7,11 @@ module.exports = {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
     ],
+    darkMode: "class",
 
     theme: {
         extend: {
+            display: ["group-hover"],
             colors: {
                 50: "#fffbeb",
                 100: "#fef3c7",
