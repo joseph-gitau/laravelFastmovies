@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home;
+use App\Http\Controllers\moviesDetails;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/home', function () {
 Route::get('/user/{id}', [UserController::class, 'show']);
 Route::get('/', [home::class, 'index']);
 Route::get('/home', [home::class, 'index']);
+Route::get('/movies/{id}', [moviesDetails::class, 'index']);
 Route::get('/movies', function () {
     return view('movies');
 });

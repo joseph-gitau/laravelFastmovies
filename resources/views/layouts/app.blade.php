@@ -36,10 +36,10 @@
             }
           </style>
     </head>
-    <body class="font-sans antialiased overflow-x-hidden">
+    <body class="font-sans antialiased overflow-x-hidden ">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen min-w-screen md:w-screen md:h-screen m-auto bg-gray-100 dark:bg-slate-900">
             @livewire('navigation-menu')
             {{-- <livewire:partials.navbar /> --}}
 

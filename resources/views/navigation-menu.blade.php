@@ -233,7 +233,7 @@
         </div>
     </nav>
   @else
-  <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+  <nav x-data="{ open: false }" class="bg-white dark:bg-slate-700 border-b border-gray-100">
       
         <!-- Primary Navigation Menu v2 -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -265,9 +265,35 @@
                         <x-jet-nav-link href="/latest" :active="request()->routeIs('latest')">
                             {{ __('latest') }}
                         </x-jet-nav-link>
+                        {{-- <x-jet-responsive-nav-link> --}}
+                            <div class="group content-center">
+                                <div class="relative w-11 h-auto">
+                                    <button data-tooltip-target="tooltip-bottom" data-tooltip-placement="bottom" id="theme-toggle" type="button" class="place-content-evenly w-11 h-auto mt-3.5 has-tooltip text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 dark:border-2 dark:hover:bg-gray-600">
+                                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                                    </button>
+                                </div>
+                                <div id="tooltip-bottom" role="tooltip" class="invisible group-hover:visible tooltip flex absolute mt-4 -mx-6 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-1 tooltip dark:bg-gray-700">
+                                    Toggle Dark mode
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </div>
+                            
+                        {{-- </x-jet-responsive-nav-link> --}}
                     </div>
                 </div>
-
+                <div class="md:hidden lg:hidden group content-center pb-8">
+                    <div class="relative w-11 h-auto">
+                        <button data-tooltip-target="tooltip-bottom" data-tooltip-placement="bottom" id="theme-toggle2" type="button" class="place-content-evenly w-11 h-auto mt-3.5 has-tooltip text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 dark:border-2 dark:hover:bg-gray-600">
+                            <svg id="theme-toggle-dark-icon2" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                            <svg id="theme-toggle-light-icon2" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+                    <div id="tooltip-bottom2" role="tooltip" class="invisible group-hover:visible tooltip flex absolute mt-4 -mx-6 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-1 tooltip dark:bg-gray-700">
+                        Toggle Dark mode
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                </div>
                 
                 <!-- Hamburger -->
                 <div class="-mr-2 flex items-center sm:hidden">
@@ -299,6 +325,8 @@
                 <x-jet-responsive-nav-link href="/latest" :active="request()->routeIs('latest')">
                     {{ __('latest') }}
                 </x-jet-responsive-nav-link>
+                
+                
             </div>
 
             
