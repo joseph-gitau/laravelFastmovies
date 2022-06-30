@@ -1,26 +1,72 @@
 <x-app-layout>
-    @include('dbh')
-
-    {{-- <livewire:dbh /> --}}
-    <div class="flex w-screen md:w-4/5 lg:w-4/5 flex-wrap m-auto py-6">
-        
-        <livewire:card />
-        
-    </div>
-    <div class="mb-12">
-        <div>ret
-            <button id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
-                <div id="tooltip-toggle" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Toggle dark mode
-                <div class="tooltip-arrow" data-popper-arrow></div>
+    <div class="headers">
+        <div class="flex items-center">
+            <h1 class="text-3xl text-500 m-auto my-8 font-bold">Fastmovies1</h1>
         </div>
 
+        <div class="flex content-center">
+            <p class="w-4/5 md:w-3/4 sm:w-3/4 lg:w-3/4 m-auto text-gray-700 text-base dark:text-white my-4">
+                Download the latest HD tv series for free. The newest genres of movies in cinemas can be downloaded
+                absolutely free of charge from our website, all genres like action, sci-fi, comedy, drama, horror and
+                others.
+            </p>
+        </div>
+    </div>
+    <div class="container w-full md:w-full lg:w-5/6 h-auto">
+        <div class="flex content-center">
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white m-auto">Download latest movies for free</h1>
+        </div>
 
+        <div class="lg:w-11/12 w-full h-auto m-auto block">
+            {{-- pagination top --}}
+            <div class="w-full md:w-full lg:w-9/12 m-auto py-6">
+                {{-- <h5>Pagination:</h5> --}}
+                {{ $movies->links('pagination::tailwind') }}
+            </div>
+            {{-- 1st content 8 items --}}
+            <div class="w-full lg:w-11/12 m-auto flex flex-wrap">
+                {{-- @for ($i = 0; $i < 8; $i++)
+                    <livewire:card />
+                @endfor --}}
+                <?php $count = -1; ?>
+                @foreach ($users[0] as $key => $data)
+                    <?php
+                    $oldname = $data['title'];
+                    $newname = preg_replace('/[^A-Za-z0-9\-]/', '-', $oldname);
+                    if ($key == 20) {
+                        break;
+                    }
+                    $count++;
+                    // echo $count;
+                    ?>
+                    {{-- cards --}}
+                    <div class="relative w-52 md:w-52 lg:w-56 group my-4">
+                        <img src="https://image.tmdb.org/t/p/w500{{ $data['poster_path'] }}"
+                            alt="{{ $data['title'] }}"
+                            class="w-48 md:w-48 lg:w-48 h-auto md:h-60 lg:h-64 m-auto border-2 border-black dark:border-white rounded group-hover:opacity-60 group-hover:cursor-pointer duration-300">
+                        <span
+                            class="absolute top-[15%] left-[18%] text-2xl font-bold text-white hidden group-hover:block duration-500">
+                            @foreach ($data['genres'] as $genre)
+                                {{ $genre['name'] }},
+                            @endforeach
+                        </span>
+                        <a href="/movies/{{ $data['id'] }}-{{ $newname }}">
+                            <button
+                                class="border rounded-3xl py-2 px-4 bg-600 text-base text-white dark:text-white absolute top-2/4 left-[20%] hidden group-hover:block duration-500">View
+                                details</button>
+                        </a>
+                        <h2 class="text-black dark:text-white text-base font-bold ml-6">{{ $data['title'] }}</h2>
+                        <span class="text-gray-900 dark:text-white text-sm ml-6">{{ $data['release_date'] }}</span>
 
+                    </div>
+                @endforeach
+            </div>
 
-
-    
+        </div>
+        {{-- pagination bottom --}}
+        <div class="w-full md:w-full lg:w-9/12 m-auto py-6">
+            {{-- <h5>Pagination:</h5> --}}
+            {{ $movies->links('pagination::tailwind') }}
+        </div>
+    </div>
 </x-app-layout>

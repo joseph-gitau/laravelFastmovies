@@ -35,5 +35,6 @@ class moviesDetails extends Controller
         $jsonData[] = $response_similar;
 
         return view::make('movies.index', ['name' => $jsonData]);
+        // get
     }
 }

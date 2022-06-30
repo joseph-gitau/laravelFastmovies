@@ -5,6 +5,8 @@ module.exports = {
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./vendor/laravel/jetstream/**/*.blade.php",
         "./storage/framework/views/*.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
         "./resources/views/**/*.blade.php",
     ],
     darkMode: "class",
@@ -34,5 +36,22 @@ module.exports = {
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
+        require("tailwindcss-plugins/pagination")({
+            /* Customizations here... */
+            pagination: (theme) => ({
+                // Customize the color only. (optional)
+                color: theme("colors.teal.600"),
+
+                // Customize styling using @apply. (optional)
+                wrapper: "flex justify-center list-reset",
+
+                // Customize styling using CSS-in-JS. (optional)
+                wrapper: {
+                    display: "flex",
+                    "justify-items": "center",
+                    "@apply list-reset": {},
+                },
+            }),
+        }),
     ],
 };

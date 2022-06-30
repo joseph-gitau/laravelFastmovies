@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home;
 use App\Http\Controllers\moviesDetails;
+use App\Http\Controllers\seriesDetails;
+use App\Http\Controllers\series;
+use App\Http\Controllers\movies;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +30,14 @@ Route::get('/user/{id}', [UserController::class, 'show']);
 Route::get('/', [home::class, 'index']);
 Route::get('/home', [home::class, 'index']);
 Route::get('/movies/{id}', [moviesDetails::class, 'index']);
-Route::get('/movies', function () {
-    return view('movies');
-});
-Route::get('/series', function () {
+Route::get('/series', [series::class, 'index']);
+// Route::get('/series', [series::class, 'index'])->name('series');
+Route::get('/series/{id}', [seriesDetails::class, 'index']);
+Route::get('/series/download/{id}', [seriesDetails::class, 'download']);
+Route::get('/movies', [movies::class, 'index']);
+/* Route::get('/series', function () {
     return view('series');
-});
+}); */
 Route::get('/latest', function () {
     return view('latest');
 });
